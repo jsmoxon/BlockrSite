@@ -1,0 +1,6 @@
+*.py~
+*.pyc
+*.html~
+*.js~
+*.css~
+constants.py
