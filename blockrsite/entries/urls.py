@@ -5,4 +5,6 @@ urlpatterns = patterns('',
     url(r'^settings/', 'entries.views.administration'),
     url(r'^write/', 'entries.views.write'),
     url(r'^entries/', 'entries.views.list'),                       
+    url(r'^flag/', 'entries.views.flag'),
+    url(r'^(?P<entry_id>\d+)/', 'entries.views.view'),                       
 )

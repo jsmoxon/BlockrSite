@@ -1,0 +1,11 @@
+{{entry}}
+<br/>
+{{entry.text}}
+
+<h1>{{profile.motto}}</h1>
+
+<form action="" method="post">
+  {% csrf_token %}
+  <textarea name="text">{{entry.text}}</textarea>
+  <input type="submit" value="update" />
+</form>

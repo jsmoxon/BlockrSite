@@ -1,5 +1,9 @@
 import datetime
 
+def word_count(text):
+    words = text.split(" ")
+    return len(words)
+
 def clean_time(entry_time, goal_time):
     """
     ensures that the time for the flag is not >23; takes a goal_time and ensures that they are not >23

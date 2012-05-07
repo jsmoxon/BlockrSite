@@ -3,7 +3,7 @@ from django.template import RequestContext
 from forms import *
 from django.contrib.auth.decorators import login_required
 from models import *
-from functions import *
+from functions import word_count
 import datetime
 
 #home page for explaining the extension etc.
@@ -40,10 +40,11 @@ def write(request):
             entry.creator = UserProfile.objects.get(user=profile.user)
             entry.create_time = datetime.datetime.now()
             entry.save()
-            time_delta = datetime.timedelta(hours=profile.hours_per_goal)
-            profile.flag_time = entry.create_time + time_delta
-            profile.flag = True
-            profile.save()
+            if word_count(entry.text) > profile.word_goal:
+                time_delta = datetime.timedelta(hours=profile.hours_per_goal)
+                profile.flag_time = entry.create_time + time_delta
+                profile.flag = True
+                profile.save()
             return redirect('/entries/')
     else:
         form = EntryForm()
@@ -56,9 +57,11 @@ def list(request):
     return render_to_response("list.html", {'entries':entries})
 
 #view a single bit of writing - should be instantly editable
-def view(request):
-    return render_to_response("view.html")
+def view(request, entry_id):
+    entry = get_object_or_404(Entry, pk=entry_id)
+    return render_to_response("view.html", {'entry':entry}, context_instance=RequestContext(request))
 
 #returns a json with a flag
 def flag(request):
-    pass
+    profile = request.user.get_profile()
+    return render_to_response("flag.html", {'profile':profile}, context_instance=RequestContext(request))

@@ -31,6 +31,25 @@ DATABASES = {
 # system time zone.
 TIME_ZONE = 'America/Los_Angeles'
 
+#celery stuff
+import djcelery
+djcelery.setup_loader()
+
+#BROKER_URL = "amqp://guest:guest@localhost:5672/"
+#BROKER_BACKEND = "djkombu.transport.DatabaseTransport"
+#CELERY_RESULT_DBURI = DATABASES['default']
+
+CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"                                            
+CELERY_RESULT_DBURI = DATABASES['default']                                                                
+CELERY_RESULT_BACKEND = "amqp"                                                                            
+BROKER_HOST= "127.0.0.1"                                                                                  
+BROKER_PORT= 5672                                                                                         
+BROKER_VHOST = "/"                                                                                        
+BROKER_USER = "guest"                                                                                     
+BROKER_PASSWORD ="guest"                                                                                  
+
+
+
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
@@ -120,6 +139,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'entries',
+    'djcelery',
+    'kombu',
 )
 
 # A sample logging configuration. The only tangible logging

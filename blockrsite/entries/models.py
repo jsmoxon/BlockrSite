@@ -17,4 +17,4 @@ class Entry(models.Model):
     text = models.TextField(null=True, blank=True)
     create_time =models.DateTimeField()
     def __unicode__(self):
-        return str(self.create_date)+"--"+str(self.create_time)
+        return str(self.create_time)
