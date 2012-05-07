@@ -1,0 +1,17 @@
+<h1>Settings</h1>
+
+<form action="" method="post">
+  {% csrf_token %}
+  {{form.errors}}
+  <label>Word goal</label>
+  <input type="text" value="{{profile.word_goal}}" name="word_goal"/>
+  <label>Hours per goal</label>
+  <input type="text" value="{{profile.hours_per_goal}}" name="hours_per_goal" />
+  <label>Motto</label>
+  <input type="text" value="{{profile.motto}}" name="motto"/>
+
+  <input type="submit" value="update" />
+
+</form>
+
+

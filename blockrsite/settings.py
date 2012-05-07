@@ -3,6 +3,8 @@
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+AUTH_PROFILE_MODULE = "entries.UserProfile"
+
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
