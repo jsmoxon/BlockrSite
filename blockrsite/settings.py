@@ -143,6 +143,7 @@ INSTALLED_APPS = (
     'djcelery',
     'djkombu',
     'gunicorn',
+    'kombu.transport.django',
 )
 
 # A sample logging configuration. The only tangible logging
