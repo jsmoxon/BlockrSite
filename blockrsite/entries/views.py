@@ -6,6 +6,20 @@ from models import *
 from functions import word_count
 import datetime
 
+def check_flag():
+    print "starting to check the flag"
+    users = UserProfile.objects.all()
+    for user in users:
+        now = datetime.datetime.now()
+        if user.flag_time < now:
+            user.flag = False
+            user.save()
+    print "done checking the flag"
+    
+
+def print_something():
+    print "something!"
+
 #home page for explaining the extension etc.
 def home(request):
     return render_to_response("home.html")

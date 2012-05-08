@@ -47,7 +47,7 @@ BROKER_PORT= 5672
 BROKER_VHOST = "/"                                                                                        
 BROKER_USER = "guest"                                                                                     
 BROKER_PASSWORD ="guest"                                                                                  
-
+#CELERY_IMPORTS = ("entries.tasks",)
 
 
 # Language code for this installation. All choices can be found here:
@@ -140,7 +140,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'entries',
     'djcelery',
-    'kombu',
+#    'djkombu',
 )
 
 # A sample logging configuration. The only tangible logging
