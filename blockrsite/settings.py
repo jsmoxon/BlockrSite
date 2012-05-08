@@ -140,7 +140,6 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'entries',
     'djcelery',
-    'djkombu',
     'gunicorn',
 )
 
