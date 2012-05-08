@@ -9,3 +9,4 @@ django-picklefield==0.2.1
 kombu==2.1.8
 python-dateutil==1.5
 wsgiref==0.1.2
+django-kombu==0.9.4
