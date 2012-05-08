@@ -140,7 +140,8 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'entries',
     'djcelery',
-#    'djkombu',
+    'djkombu',
+    'gunicorn',
 )
 
 # A sample logging configuration. The only tangible logging
