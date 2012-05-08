@@ -36,17 +36,17 @@ import djcelery
 djcelery.setup_loader()
 
 #BROKER_URL = "amqp://guest:guest@localhost:5672/"
-#BROKER_BACKEND = "djkombu.transport.DatabaseTransport"
-#CELERY_RESULT_DBURI = DATABASES['default']
+BROKER_BACKEND = "djkombu.transport.DatabaseTransport"
+CELERY_RESULT_DBURI = DATABASES['default']
 
-CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"                                            
-CELERY_RESULT_DBURI = DATABASES['default']                                                                
-CELERY_RESULT_BACKEND = "amqp"                                                                            
-BROKER_HOST= "127.0.0.1"                                                                                  
-BROKER_PORT= 5672                                                                                         
-BROKER_VHOST = "/"                                                                                        
-BROKER_USER = "guest"                                                                                     
-BROKER_PASSWORD ="guest"                                                                                  
+#CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"                                            
+#CELERY_RESULT_DBURI = DATABASES['default']                                                                
+#CELERY_RESULT_BACKEND = "amqp"                                                                            
+#BROKER_HOST= "127.0.0.1"                                                                                  
+#BROKER_PORT= 5672                                                                                         
+#BROKER_VHOST = "/"                                                                                        
+#BROKER_USER = "guest"                                                                                     
+#BROKER_PASSWORD ="guest"                                                                                  
 #CELERY_IMPORTS = ("entries.tasks",)
 
 
