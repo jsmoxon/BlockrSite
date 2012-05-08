@@ -36,8 +36,8 @@ import djcelery
 djcelery.setup_loader()
 
 #BROKER_URL = "amqp://guest:guest@localhost:5672/"
-#BROKER_BACKEND = "djkombu.transport.DatabaseTransport"
-BROKER_BACKEND = 'django'
+BROKER_BACKEND = "djkombu.transport.DatabaseTransport"
+#BROKER_BACKEND = 'django'
 CELERY_RESULT_DBURI = DATABASES['default']
 
 #CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"                                            
