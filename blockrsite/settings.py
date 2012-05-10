@@ -141,7 +141,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'entries',
     'djcelery',
-    'djkombu',
+#    'djkombu',
     'kombu.transport.django',
     'gunicorn',
 )
