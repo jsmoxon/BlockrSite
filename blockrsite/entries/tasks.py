@@ -4,7 +4,7 @@ from datetime import timedelta
 from blockrsite.entries.views import check_flag, print_something
 
 class CheckFlag(PeriodicTask):
-    run_every = timedelta(seconds=30)
+    run_every = timedelta(seconds=60)
 
     def run(self, **kwargs):
         check_flag()
