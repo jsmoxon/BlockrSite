@@ -1,4 +1,7 @@
+{% extends 'base.html' %}
+{% block page %}
 <h1>List</h1>
 {% for entry in entries %}
 <li><a href="/{{entry.id}}">{{entry.text}}</a></li>
 {% endfor %}
+{% endblock page %}

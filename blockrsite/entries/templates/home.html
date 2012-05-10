@@ -1,1 +1,11 @@
-<h1>Hello, world!</h1>
+{% extends 'base.html' %}
+{% block page %}
+<h1>Welcome to Blockr!</h1>
+
+<ol>
+  <li><a href="https://github.com/jsmoxon/Blockr">Download Blockr</a></li>
+  <li><a href="/create_profile/">Sign up!</a></li>
+  <li>Produce more, consume less.</li>
+</ol>
+{% endblock page %}
+

@@ -1,7 +1,32 @@
+{% load static %}
+<html>
+<head>
+    <link rel="stylesheet" href="{% get_static_prefix %}css/style.css">
+
+</head>
+<body>
+
 <h1>{{profile.motto}}</h1>
 
 <form action=""method="post">
   {% csrf_token %}
-  {{form}}
+  {{form.errors}}
+  <div id="writing">
+  <textarea name="text" id="body_text" class="prose" rows="20" cols="20" ></textarea>  
+  </div><!--writing-->
   <input type="submit" value="update" />
 </form>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('h1').delay(4000).fadeOut();
+$(function () {
+  $(window).load(function () {
+$(':input:visible:enabled:first').focus();
+  });
+})
+});
+
+</script>
+
+</body>

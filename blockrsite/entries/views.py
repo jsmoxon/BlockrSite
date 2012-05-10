@@ -1,6 +1,7 @@
 from django.shortcuts import render_to_response, get_object_or_404, HttpResponse, redirect
 from django.template import RequestContext
 from forms import *
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from models import *
 from functions import word_count
@@ -24,6 +25,24 @@ def print_something():
 def home(request):
     return render_to_response("home.html")
 
+def create_profile(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            user = User.objects.create_user(form.cleaned_data['username'],form.cleaned_data['username'],form.cleaned_data['password'])
+            user.save()
+            profile = UserProfile(user=user)
+            profile.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            authorize = authenticate(username=username, password=password)
+            login(request, authorize)
+            return redirect('/settings/')
+    else:
+        form = RegistrationForm()
+    return render_to_response("create_profile.html", {"form":form}, context_instance=RequestContext(request))
+
+
 @login_required
 def administration(request):
     """
@@ -38,7 +57,7 @@ def administration(request):
             person.hours_per_goal = form.cleaned_data['hours_per_goal']
             person.motto = form.cleaned_data['motto']
             person.save()
-            return redirect('/settings/')
+            return redirect('/entries/')
     else:
         form = UserForm()
     return render_to_response("administration.html", {"form":form, "profile":profile}, context_instance=RequestContext(request))
