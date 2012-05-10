@@ -4,4 +4,4 @@
 *.js~
 *.css~
 constants.py
-blockrDB
+blockrDBcelerybeat-schedule.db
