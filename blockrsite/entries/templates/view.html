@@ -1,11 +1,5 @@
-{{entry}}
-<br/>
-{{entry.text}}
+{% extends 'base.html' %}
+{% block page %}
 
-<h1>{{profile.motto}}</h1>
-
-<form action="" method="post">
-  {% csrf_token %}
-  <textarea name="text">{{entry.text}}</textarea>
-  <input type="submit" value="update" />
-</form>
+<p>{{entry.text|linebreaks}}</p>
+{% endblock page %}
