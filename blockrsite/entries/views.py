@@ -66,7 +66,6 @@ def administration(request):
     return render_to_response("administration.html", {"form":form, "profile":profile}, context_instance=RequestContext(request))
 
 #blank page for writing
-@login_required
 def write(request):
     profile = request.user.get_profile()
     if request.method == 'POST':
