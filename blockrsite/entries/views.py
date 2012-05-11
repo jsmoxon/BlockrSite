@@ -63,6 +63,7 @@ def administration(request):
     return render_to_response("administration.html", {"form":form, "profile":profile}, context_instance=RequestContext(request))
 
 #blank page for writing
+@login_required
 def write(request):
     profile = request.user.get_profile()
     if request.method == 'POST':
@@ -84,17 +85,20 @@ def write(request):
     return render_to_response("write.html", {'form':form, 'profile':profile}, context_instance=RequestContext(request))
 
 #list of a users writing
+@login_required
 def list(request):
     profile = request.user.get_profile()
     entries = Entry.objects.filter(creator=profile.user)
     return render_to_response("list.html", {'entries':entries})
 
 #view a single bit of writing - should be instantly editable
+@login_required
 def view(request, entry_id):
     entry = get_object_or_404(Entry, pk=entry_id)
     return render_to_response("view.html", {'entry':entry}, context_instance=RequestContext(request))
 
 #returns a json with a flag
+@login_required
 def flag(request):
     profile = request.user.get_profile()
     return render_to_response("flag.html", {'profile':profile}, context_instance=RequestContext(request))
