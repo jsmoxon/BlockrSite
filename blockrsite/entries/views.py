@@ -101,7 +101,6 @@ def view(request, entry_id):
     return render_to_response("view.html", {'entry':entry}, context_instance=RequestContext(request))
 
 #returns a json with a flag
-@login_required
 def flag(request):
     profile = request.user.get_profile()
     return render_to_response("flag.html", {'profile':profile}, context_instance=RequestContext(request))
