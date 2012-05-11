@@ -5,7 +5,7 @@ TEMPLATE_DEBUG = DEBUG
 
 AUTH_PROFILE_MODULE = "entries.UserProfile"
 AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',)
-
+LOGIN_REDIRECT_URL = '/entries/'
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
