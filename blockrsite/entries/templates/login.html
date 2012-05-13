@@ -1,3 +1,6 @@
+{% extends 'footer.html' %}
+{% block page %}
+
 <h1>Login</h1>
 
 <form method="post" action="/accounts/login/">
@@ -16,3 +19,4 @@
 <input type="submit" value="login" />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
+{% endblock page %}

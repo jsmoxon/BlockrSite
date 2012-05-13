@@ -12,6 +12,11 @@ class EntryForm(ModelForm):
         model = Entry
         exclude = ('create_time', 'creator')
 
+class EntryUpdateForm(ModelForm):
+    class Meta:
+        model = Entry
+        exclude = ('create_time', 'creator')
+
 class RegistrationForm(ModelForm):
     class Meta:
         model = User

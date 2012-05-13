@@ -1,5 +1,17 @@
-{% extends 'base.html' %}
+{% extends 'footer.html' %}
 {% block page %}
+<div id="motto">
+<h1>{{profile.motto}}</h1>
+</div>
+<form action=""method="post">
+  {% csrf_token %}
+  {{form.errors}}
+  <div id="writing">
+  <textarea name="text" id="body_text" class="prose" rows="20" cols="20" >{{entry.text|escape}}</textarea>
+  </div><!--writing-->
+  <input type="submit" value="update" />
+</form>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
 
-<p>{{entry.text|linebreaks}}</p>
 {% endblock page %}

@@ -1,13 +1,9 @@
-{% load static %}
-<html>
-<head>
-    <link rel="stylesheet" href="{% get_static_prefix %}css/style.css">
+{% extends 'base.html' %}
+{% block page %}
 
-</head>
-<body>
-
+<div id="motto">
 <h1>{{profile.motto}}</h1>
-
+</div>
 <form action=""method="post">
   {% csrf_token %}
   {{form.errors}}
@@ -18,8 +14,12 @@
 </form>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript">
+function complete() {
+  $('#motto').text("the cookie");
+};
+
 $(document).ready(function() {
-  $('h1').delay(4000).fadeOut();
+  $('h1').fadeOut(4000);
 $(function () {
   $(window).load(function () {
 $(':input:visible:enabled:first').focus();
@@ -29,4 +29,5 @@ $(':input:visible:enabled:first').focus();
 
 </script>
 
-</body>
+{% endblock page %}
+
