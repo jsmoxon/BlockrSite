@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block page %}
 
 <div id="motto">
@@ -8,15 +9,18 @@
   {% csrf_token %}
   {{form.errors}}
   <div id="writing">
-  <textarea name="text" id="body_text" class="prose" rows="20" cols="20" ></textarea>  
+    <textarea name="text" id="body_text" class="prose word_count" rows="20" cols="20" ></textarea>  
   </div><!--writing-->
+  <div id="body_text_count" style="display:none"></div>
   <input type="submit" value="update" />
 </form>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="{% get_static_prefix %}js/wordcount.js"></script>
+
 <script type="text/javascript">
-function complete() {
+  function complete() {
   $('#motto').text("the cookie");
-};
+  };
 
 $(document).ready(function() {
   $('h1').fadeOut(4000);

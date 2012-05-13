@@ -2,6 +2,6 @@
 {% block page %}
 <h1>List</h1>
 {% for entry in entries %}
-<li><a href="/{{entry.id}}">{{entry.text}}</a></li>
+<li><a href="/{{entry.id}}">{{entry.text|truncatewords:20}}</a> -- {{entry.create_time}}</li>
 {% endfor %}
 {% endblock page %}
