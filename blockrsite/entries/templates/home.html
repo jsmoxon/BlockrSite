@@ -1,13 +1,27 @@
 {% extends 'footer.html' %}
+{% load static %}
 {% block page %}
 <div id="home_main" class="span4">
-  <h1>Welcome to Blockr!</h1>
+  <img src="{% get_static_prefix %}images/alwaysproduce.png" />
+  <img src="{% get_static_prefix %}images/easel.png" class="offset3"/>
 
-  <ol>
-    <li><a href="/create_profile/">Sign up!</a></li>
-    <li><a href="https://github.com/jsmoxon/Blockr">Download Blockr</a></li>
-    <li>Produce more, consume less.</li>
-  </ol>
+    <div class="signupform">
+      <form action=""method="post" class="offset3">
+	{% csrf_token %}
+	{{form.errors}}
+	<label>Email:</label>
+	{{form.username}}
+	<label>Password:</label>
+	{{form.password}}
+	<br/><br/>
+	<input type="submit" value="Signup" />
+      </form>
+    </div>
+    <p class="span4 center explainer">
+      Blockr is a Chrome Extension that lets you set creative goals and blocks you from the Internet until you've acheived them. <br/><br/>
+      It was inspired by Paul Graham's <a href="http://www.paulgraham.com/love.html">How to Do What You Love.</a> <br/><br/>
+      Produce more, consume less.
+    </p>
 </div><!--closes home_main-->
 {% endblock page %}
 

@@ -5,6 +5,18 @@ header {
 height:60px;
 }
 
+.signupform {
+margin-left:70px;
+}
+
+.explainer {
+margin-left:300px;
+}
+
+.center {
+text-align:center;
+}
+
 /* motto div on write.html*/
 #motto {
 min-height:120px;
@@ -14,7 +26,7 @@ min-height:120px;
 width:800px;
 margin: 0px auto;
 text-align:center;
-margin-top:100px;
+margin-top:50px;
 }
 
 footer li {

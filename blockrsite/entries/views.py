@@ -23,7 +23,24 @@ def print_something():
 
 #home page for explaining the extension etc.
 def home(request):
-    return render_to_response("home.html")
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            user = User.objects.create_user(form.cleaned_data['username'],form.cleaned_data['username'],form.cleaned_data['password'])
+            user.save()
+            profile = UserProfile(user=user)
+            profile.flag = True
+            time_delta = datetime.timedelta(minutes=10)
+            profile.flag_time = datetime.datetime.now() + time_delta
+            profile.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            authorize = authenticate(username=username, password=password)
+            login(request, authorize)
+            return redirect('/settings/')
+    else:
+        form = RegistrationForm()
+    return render_to_response("home.html", {"form":form}, context_instance=RequestContext(request))
 
 def create_profile(request):
     if request.method == 'POST':
