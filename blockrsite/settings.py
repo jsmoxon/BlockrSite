@@ -1,6 +1,6 @@
 # Django settings for blockrsite project.
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 AUTH_PROFILE_MODULE = "entries.UserProfile"
