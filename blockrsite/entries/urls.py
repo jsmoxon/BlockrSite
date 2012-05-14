@@ -10,5 +10,6 @@ urlpatterns = patterns('',
     url(r'^entries/', 'entries.views.list'),                       
     url(r'^flag/', 'entries.views.flag'),
     url(r'^(?P<entry_id>\d+)/', 'entries.views.view'),                       
-    url(r'^google/', direct_to_template, {'template': 'google.html'}),                        
+    url(r'^google62e008c19d363d60.html ', direct_to_template, {'template': 'google.html'}),                        
+
 )
