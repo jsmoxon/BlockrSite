@@ -1,12 +1,13 @@
-#home_main {
-}
-
 header {
 height:60px;
 }
 
 .signupform {
 margin-left:70px;
+}
+
+.signupbutton {
+margin-left:80px;
 }
 
 .explainer {

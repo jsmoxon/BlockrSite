@@ -1,7 +1,10 @@
 {% extends 'footer.html' %}
+{% load static %}
 {% block page %}
+  <img src="{% get_static_prefix %}images/easel.png" class="offset3"/>
 
 <h1>Login</h1>
+
 
 <form method="post" action="/accounts/login/">
 {% csrf_token %}

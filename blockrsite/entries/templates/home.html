@@ -9,12 +9,12 @@
       <form action=""method="post" class="offset3">
 	{% csrf_token %}
 	{{form.errors}}
-	<label>Email:</label>
+	<label class="">Email:</label>
 	{{form.username}}
-	<label>Password:</label>
+	<label class="">Password:</label>
 	{{form.password}}
 	<br/><br/>
-	<input type="submit" value="Signup" />
+	<input type="submit" value="Signup" class="signupbutton"/>
       </form>
     </div>
     <p class="span4 center explainer">
