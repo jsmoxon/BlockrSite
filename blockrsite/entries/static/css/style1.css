@@ -1,6 +1,10 @@
 #home_main {
 }
 
+header {
+height:60px;
+}
+
 /* motto div on write.html*/
 #motto {
 min-height:120px;
