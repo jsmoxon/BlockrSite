@@ -35,3 +35,14 @@ display:inline;
 padding:10px;
 }
 
+#home_login_form {
+float:right;
+margin-top:-50px;}
+
+.login_input {
+width:100px;
+}
+
+#home_main {
+clear:both;
+}
