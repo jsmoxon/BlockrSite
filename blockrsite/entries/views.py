@@ -107,7 +107,7 @@ def write(request):
 @login_required
 def list(request):
     profile = request.user.get_profile()
-    entries = Entry.objects.filter(creator=profile.user)
+    entries = Entry.objects.filter(creator=profile.user).order_by('-create_time')
     return render_to_response("list.html", {'entries':entries})
 
 #view a single bit of writing - should be instantly editable
