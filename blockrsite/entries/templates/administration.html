@@ -9,14 +9,15 @@
 <form action="" method="post">
   {% csrf_token %}
   {{form.errors}}
-  <label>Word goal</label>
+  <label>Pick a word goal</label>
   <input type="text" value="{{profile.word_goal}}" name="word_goal"/>
-  <label>Hours per goal</label>
+  <label>How many hours until you have to write again?</label>
   <input type="text" value="{{profile.hours_per_goal}}" name="hours_per_goal" />
-  <label>Pick an inspirational motto that will be displayed for a second when you start to write</label>
+  <br/><br/>
+  <label>Choose an inspirational motto or phrase like, 'always produce'</lablel>
   <input type="text" value="{{profile.motto}}" name="motto"/>
-
-  <input type="submit" value="update" />
+  <br/>
+  <input type="submit" value="Update" />
 
 </form>
 
