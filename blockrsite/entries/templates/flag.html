@@ -1,1 +1,6 @@
-{"flag":"{{profile.flag}}"}
+{"flag":"{{profile.flag}}", "urls": [
+{% for url in blacklist %}
+"{{url.url}}",
+{% endfor %}
+"jackmoxon.com"
+]}

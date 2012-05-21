@@ -4,7 +4,7 @@ from forms import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from models import *
-from functions import word_count
+from functions import word_count, clean_blacklist
 import datetime
 
 def check_flag():
@@ -70,6 +70,7 @@ def administration(request):
     """
     profile = request.user.get_profile()
     person = UserProfile.objects.get(user=profile.user.id)
+    blacklist = BlacklistURL.objects.filter(profile=profile)
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
@@ -77,10 +78,14 @@ def administration(request):
             person.hours_per_goal = form.cleaned_data['hours_per_goal']
             person.motto = form.cleaned_data['motto']
             person.save()
+            list_of_urls = request.POST['blacklist'].split(',')
+            for url in list_of_urls:
+                add = BlacklistURL(profile=profile,url=url)
+                add.save()
             return redirect('/entries/')
     else:
         form = UserForm()
-    return render_to_response("administration.html", {"form":form, "profile":profile}, context_instance=RequestContext(request))
+    return render_to_response("administration.html", {"form":form, "profile":profile, "blacklist":blacklist}, context_instance=RequestContext(request))
 
 #blank page for writing
 def write(request):
@@ -128,4 +133,5 @@ def view(request, entry_id):
 #returns a json with a flag
 def flag(request):
     profile = request.user.get_profile()
-    return render_to_response("flag.html", {'profile':profile}, context_instance=RequestContext(request))
+    blacklist = BlacklistURL.objects.filter(profile=profile)
+    return render_to_response("flag.html", {'profile':profile, 'blacklist':blacklist}, context_instance=RequestContext(request))

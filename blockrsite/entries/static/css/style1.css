@@ -46,3 +46,10 @@ width:100px;
 #home_main {
 clear:both;
 }
+
+/* ABOUT.HTML */
+.about {
+width:455px;
+margin: 0px auto;
+margin-top:5px;
+}

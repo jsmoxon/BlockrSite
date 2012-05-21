@@ -16,3 +16,8 @@ def clean_time(entry_time, goal_time):
     else:
         return abs(24-sum)
 
+def clean_blacklist(user, string_of_urls):
+    """
+    takes a user and string of urls, parses the string into a list that can be uploaded to the database via a for loop
+    """
+    return string_of_urls.split(',')

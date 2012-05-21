@@ -7,6 +7,11 @@ class UserForm(ModelForm):
         model = UserProfile
         exclude = ('user', 'flag_time', 'flag')
 
+class BlacklistForm(ModelForm):
+    class Meta:
+        model = BlacklistURL
+        exclude = ('profile')
+
 class EntryForm(ModelForm):
     class Meta:
         model = Entry
