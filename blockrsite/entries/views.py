@@ -128,5 +128,4 @@ def view(request, entry_id):
 #returns a json with a flag
 def flag(request):
     profile = request.user.get_profile()
-    blacklist = BlacklistURL.objects.filter(profile=profile)
-    return render_to_response("flag.html", {'profile':profile, 'blacklist':blacklist}, context_instance=RequestContext(request))
+    return render_to_response("flag.html", {'profile':profile}, context_instance=RequestContext(request))
