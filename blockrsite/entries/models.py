@@ -19,8 +19,3 @@ class Entry(models.Model):
     def __unicode__(self):
         return str(self.create_time)
 
-class BlacklistURL(models.Model):
-    profile = models.ForeignKey(UserProfile)
-    url = models.CharField(max_length=300, null=True, blank=True)
-    def __unicode__(self):
-        return str(self.url)

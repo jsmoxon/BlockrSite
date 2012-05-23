@@ -17,12 +17,6 @@
   <label>Choose an inspirational motto or phrase like, 'always produce'</lablel>
   <input type="text" value="{{profile.motto}}" name="motto"/>
   <br/>
-  <label>Which urls should we block?</label>
-  <p>Separate each url by comma (e.g., "news.ycombinator.com, nytimes.com")</p>
-  <input type="text" value="{% for url in blacklist%}{{url.url}},{% endfor %}" name="blacklist"/>
-
-  <br/>
-
   <input type="submit" value="Update" />
 
 </form>

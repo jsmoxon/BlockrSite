@@ -70,7 +70,6 @@ def administration(request):
     """
     profile = request.user.get_profile()
     person = UserProfile.objects.get(user=profile.user.id)
-    blacklist = BlacklistURL.objects.filter(profile=profile)
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
@@ -78,14 +77,10 @@ def administration(request):
             person.hours_per_goal = form.cleaned_data['hours_per_goal']
             person.motto = form.cleaned_data['motto']
             person.save()
-            list_of_urls = request.POST['blacklist'].split(',')
-            for url in list_of_urls:
-                add = BlacklistURL(profile=profile,url=url)
-                add.save()
             return redirect('/entries/')
     else:
         form = UserForm()
-    return render_to_response("administration.html", {"form":form, "profile":profile, "blacklist":blacklist}, context_instance=RequestContext(request))
+    return render_to_response("administration.html", {"form":form, "profile":profile}, context_instance=RequestContext(request))
 
 #blank page for writing
 def write(request):
