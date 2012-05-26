@@ -136,7 +136,7 @@ def no_commits(request):
 def list(request):
     profile = request.user.get_profile()
     entries = Entry.objects.filter(creator=profile.user).order_by('-create_time')
-    return render_to_response("list.html", {'entries':entries})
+    return render_to_response("list.html", {'entries':entries, 'profile':profile})
 
 #view a single bit of writing - should be instantly editable
 @login_required

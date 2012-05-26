@@ -6,6 +6,12 @@ height:60px;
 color:#08C;
 }
 
+/* used in the settings page*/
+.dd {
+color:#08C;
+cursor:pointer;
+}
+
 .signupform {
 margin-left:70px;
 }
