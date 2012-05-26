@@ -44,7 +44,6 @@ def create_total_commit_list(username, repo_list):
     """
     total_commit_list = []
     for r in repo_list:
-        print r
         total_commit_list.append(check_commit_list(username,r))
     return total_commit_list
         
@@ -66,8 +65,6 @@ def clean_date(date_string):
         hour = int(time[0])
     return datetime.datetime(year, month, day, hour, minute, second)
 
-#clean_date("2012-05-23T0:21:52-07:00")
-
 def check_for_recent_commits(time, total_commit_list):
     """
     takes a list of commit times and checks against a specified time and prints commits that have come since the specified time and prints the number of commits since the specified time
@@ -77,10 +74,8 @@ def check_for_recent_commits(time, total_commit_list):
         for commit in repo:            
             if clean_date(commit['date']) > time:
                 count += 1
-    print str(count)+" commits since "+str(time)
+#    print str(count)+" commits since "+str(time)
     return count
-#print create_total_commit_list(create_repo_list("jsmoxon"))[0][0]['date']
-#check_for_recent_commits(datetime.datetime(2012,5,21), create_total_commit_list(create_repo_list("jsmoxon")))
 
 def check_commits(time, username):
     """
