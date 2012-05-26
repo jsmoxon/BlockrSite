@@ -4,9 +4,9 @@
   <img src="{% get_static_prefix %}images/easel.png" class="offset3"/>
 
 
+<div class="span6">
 <h1>Settings</h1>
 
-<div class="span6">
 <form action="" method="post">
   {% csrf_token %}
   {{form.errors}}
@@ -17,7 +17,7 @@
   <input type="text" value="{{profile.hours_per_goal}}" name="hours_per_goal" />
   <br/><br/>
   <h4>Writing Goals</h4>
-  <label>Pick a word goal</label>
+  <label>How many words do you want to set as your goal?</label>
   <input type="text" value="{{profile.word_goal}}" name="word_goal"/>
   <br/><br/>
   <h4 class="dd">Coding Goals?</h4>
