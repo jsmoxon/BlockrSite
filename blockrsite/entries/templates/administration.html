@@ -9,25 +9,40 @@
 <form action="" method="post">
   {% csrf_token %}
   {{form.errors}}
-  <label>Pick a word goal</label>
-  <input type="text" value="{{profile.word_goal}}" name="word_goal"/>
+  <label>Choose an inspirational motto or phrase like, 'always produce'</label>
+  <input type="text" value="{{profile.motto}}" name="motto" />
+  <br/>
   <label>How many hours until you have to write again?</label>
   <input type="text" value="{{profile.hours_per_goal}}" name="hours_per_goal" />
   <br/><br/>
-  <label>Choose an inspirational motto or phrase like, 'always produce'</lablel>
-  <input type="text" value="{{profile.motto}}" name="motto"/>
-  <br/>
-  <label>Github username</label>
-  <input type="text" value="{{profile.github_name}}" name="github_name" />
-  <br/>
-  <label>Pick a Commit Goal</label>
-  <input type="text" value="{{profile.commit_goal}}" name="commit_goal" />
+  <h4>Writing Goals</h4>
+  <label>Pick a word goal</label>
+  <input type="text" value="{{profile.word_goal}}" name="word_goal"/>
+  <br/><br/>
+  <h4 class="dd">Coding Goals?</h4>
+  <div class = "dropdown">
+    <label>Github username</label>
+    <input type="text" value="{{profile.github_name}}" name="github_name" />
+    <br/>
+    <label>Pick a Commit Goal</label>
+    <input type="text" value="{{profile.commit_goal}}" name="commit_goal" />
+  </div>
+  <br/><br/>
   <input type="submit" value="Update" />
-
+  
 </form>
 <br/><br/>
 
     <a href="https://chrome.google.com/webstore/detail/pdcnhbnkcbbkejnciobokdhmldndglld"><img src="{% get_static_prefix %}images/ChromeWebStore_Badge_v2_340x96.png" /></a>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.dropdown').hide();
+    $('.dd').click(function() {
+      $(this).next().slideToggle();
+    });
+  });    
+</script>
 
 {% endblock page %}
 

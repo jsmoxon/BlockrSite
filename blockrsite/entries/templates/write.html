@@ -15,7 +15,7 @@
   <div id="body_text_count" style="display:none"></div>
   <input type="submit" value="update" />
 </form>
-{% if profile.github_name != "None"  %}
+{% if profile.github_name != "" and profile.github_name != "None"  %}
 <form action="/github/" method="post">
   {% csrf_token %}
   <input type="submit" value="I've commited code. Check me!" />
