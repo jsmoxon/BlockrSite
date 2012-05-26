@@ -160,7 +160,6 @@ def flag(request):
 
 def check_github(request):
     profile = request.user.get_profile()
-    message = "You haven't commited recently enough"
     if request.method == 'POST':
         if profile.last_commit_check and profile.github_name and profile.commit_goal:
             check = what_should_flag_be(profile.last_commit_check, profile.github_name, profile.commit_goal)
@@ -168,9 +167,9 @@ def check_github(request):
             if check == True:
                 profile.flag = True
                 profile.last_commit_check = datetime.datetime.now()
+                profile.save()
                 return redirect('/entries/')
             else:
-#                request.session['message'] = "We don't see any commits." 
                 return redirect('/write/nocommits/')
         else:
             return HttpResponse("You need to enter your github credentials at http://localhost:8000/settings/")
