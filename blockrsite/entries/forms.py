@@ -5,7 +5,7 @@ from django import forms
 class UserForm(ModelForm):
     class Meta:
         model = UserProfile
-        exclude = ('user', 'flag_time', 'flag')
+        exclude = ('user', 'flag_time', 'flag', 'last_commit_check')
 
 class EntryForm(ModelForm):
     class Meta:

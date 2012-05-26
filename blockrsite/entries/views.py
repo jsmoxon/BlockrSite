@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from models import *
 from functions import word_count, clean_blacklist
 import datetime
+from github import *
 
 def check_flag():
     print "starting to check the flag"
@@ -17,10 +18,6 @@ def check_flag():
             user.save()
     print "done checking the flag"
     
-
-def print_something():
-    print "something!"
-
 #home page for explaining the extension etc.
 def home(request):
     if request.method == 'POST':
@@ -76,6 +73,8 @@ def administration(request):
             person.word_goal = form.cleaned_data['word_goal']
             person.hours_per_goal = form.cleaned_data['hours_per_goal']
             person.motto = form.cleaned_data['motto']
+            person.github_name = form.cleaned_data['github_name']
+            person.commit_goal = form.cleaned_data['commit_goal']
             person.save()
             return redirect('/entries/')
     else:
@@ -129,3 +128,18 @@ def view(request, entry_id):
 def flag(request):
     profile = request.user.get_profile()
     return render_to_response("flag.html", {'profile':profile}, context_instance=RequestContext(request))
+
+def check_github(request):
+    profile = request.user.get_profile()
+    if request.method == 'POST':
+        if profile.last_commit_check and profile.github_name and profile.commit_goal:
+            check = what_should_flag_be(profile.last_commit_check, profile.github_name, profile.commit_goal)
+            print check
+            if check == True:
+                return HttpResponse("true!")
+            else:
+                return redirect('/github/')
+        else:
+            return HttpResponse("You need to enter your github credentials at http://localhost:8000/settings/")
+    return render_to_response("github.html", {'profile':profile}, context_instance=RequestContext(request))
+    

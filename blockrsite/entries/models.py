@@ -9,6 +9,9 @@ class UserProfile(models.Model):
     motto = models.CharField(max_length=500, null=True, blank=True)
     flag_time = models.DateTimeField(null=True, blank=True)
     flag = models.BooleanField(default=False)
+    github_name = models.CharField(max_length=40, null=True, blank=True)
+    commit_goal = models.IntegerField(blank=True, null=True)
+    last_commit_check = models.DateTimeField(null=True, blank=True)
     def __unicode__(self):
         return self.user.username
     

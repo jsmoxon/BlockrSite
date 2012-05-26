@@ -10,4 +10,5 @@ gunicorn==0.12.2
 kombu==2.1.8
 psycopg2==2.4.4
 python-dateutil==1.5
+simplejson==2.5.2
 wsgiref==0.1.2

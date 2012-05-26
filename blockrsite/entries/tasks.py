@@ -1,7 +1,7 @@
 from celery.task import PeriodicTask
 from models import UserProfile
 from datetime import timedelta
-from blockrsite.entries.views import check_flag, print_something
+from blockrsite.entries.views import check_flag
 
 class CheckFlag(PeriodicTask):
     run_every = timedelta(seconds=30)
