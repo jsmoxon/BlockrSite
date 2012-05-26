@@ -166,6 +166,8 @@ def check_github(request):
             print check
             if check == True:
                 profile.flag = True
+                time_delta = datetime.timedelta(hours=profile.hours_per_goal)
+                profile.flag_time = datetime.datetime.now() + time_delta
                 profile.last_commit_check = datetime.datetime.now()
                 profile.save()
                 return redirect('/entries/')
