@@ -75,6 +75,8 @@ def administration(request):
             person.motto = form.cleaned_data['motto']
             person.github_name = form.cleaned_data['github_name']
             person.commit_goal = form.cleaned_data['commit_goal']
+            #known issue - you will reset your commit check time if you update any part of your profile - it just means more committing 
+            person.last_commit_check = datetime.datetime.now()
             person.save()
             return redirect('/entries/')
     else:
@@ -84,6 +86,10 @@ def administration(request):
 #blank page for writing
 def write(request):
     profile = request.user.get_profile()
+#    try:
+ #       message = request.session['message']
+ #   except:
+ #       message = ""
     if request.method == 'POST':
         form = EntryForm(request.POST)
         if form.is_valid():
@@ -101,6 +107,29 @@ def write(request):
     else:
         form = EntryForm()
     return render_to_response("write.html", {'form':form, 'profile':profile}, context_instance=RequestContext(request))
+
+def no_commits(request):
+    profile = request.user.get_profile()
+    message = "We don't see any commits. Write something or commit again!"
+    if request.method == 'POST':
+        form = EntryForm(request.POST)
+        if form.is_valid():
+            entry = Entry()
+            entry.text = form.cleaned_data['text']
+            entry.creator = UserProfile.objects.get(user=profile.user)
+            entry.create_time = datetime.datetime.now()
+            entry.save()
+            if word_count(entry.text) > profile.word_goal:
+                time_delta = datetime.timedelta(hours=profile.hours_per_goal)
+                profile.flag_time = entry.create_time + time_delta
+                profile.flag = True
+                profile.save()
+            return redirect('/entries/')
+    else:
+        form = EntryForm()
+    return render_to_response("write.html", {'form':form, 'profile':profile, 'message':message}, context_instance=RequestContext(request))
+
+
 
 #list of a users writing
 @login_required
@@ -131,14 +160,18 @@ def flag(request):
 
 def check_github(request):
     profile = request.user.get_profile()
+    message = "You haven't commited recently enough"
     if request.method == 'POST':
         if profile.last_commit_check and profile.github_name and profile.commit_goal:
             check = what_should_flag_be(profile.last_commit_check, profile.github_name, profile.commit_goal)
             print check
             if check == True:
-                return HttpResponse("true!")
+                profile.flag = True
+                profile.last_commit_check = datetime.datetime.now()
+                return redirect('/entries/')
             else:
-                return redirect('/write/')
+#                request.session['message'] = "We don't see any commits." 
+                return redirect('/write/nocommits/')
         else:
             return HttpResponse("You need to enter your github credentials at http://localhost:8000/settings/")
     return render_to_response("github.html", {'profile':profile}, context_instance=RequestContext(request))
