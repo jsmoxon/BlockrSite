@@ -13,7 +13,20 @@ cursor:pointer;
 }
 
 .signupform {
-margin-left:70px;
+clear:both;
+margin-left:auto;
+margin-right:auto;
+width:250px;
+}
+
+.bla {
+background:gree;
+}
+
+.logo {
+margin-left:40px;;
+margin-bottom:30px;
+background:rd;
 }
 
 .signupbutton {
@@ -55,6 +68,14 @@ width:100px;
 
 #home_main {
 clear:both;
+}
+
+.right {
+float:right;
+}
+
+.pointer {
+cursor:pointer;
 }
 
 /* ABOUT.HTML */

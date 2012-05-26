@@ -37,7 +37,7 @@ def home(request):
             return redirect('/settings/')
     else:
         form = RegistrationForm()
-    return render_to_response("home.html", {"form":form}, context_instance=RequestContext(request))
+    return render_to_response("home2.html", {"form":form}, context_instance=RequestContext(request))
 
 def create_profile(request):
     if request.method == 'POST':
