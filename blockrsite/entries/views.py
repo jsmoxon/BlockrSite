@@ -138,7 +138,7 @@ def check_github(request):
             if check == True:
                 return HttpResponse("true!")
             else:
-                return redirect('/github/')
+                return redirect('/write/')
         else:
             return HttpResponse("You need to enter your github credentials at http://localhost:8000/settings/")
     return render_to_response("github.html", {'profile':profile}, context_instance=RequestContext(request))
