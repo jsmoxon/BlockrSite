@@ -211,15 +211,6 @@ def write_preview(request):
         if form.is_valid():
             entry = Entry()
             entry.text = form.cleaned_data['text']
-#            entry.creator = UserProfile.objects.get(user=profile.user)
- #           entry.create_time = datetime.datetime.now()
-  #          entry.save()
-   #         if word_count(entry.text) > profile.word_goal:
-    #            time_delta = datetime.timedelta(hours=profile.hours_per_goal)
-     #           profile.flag_time = entry.create_time + time_delta
-      #          profile.flag = True
-       #         profile.save()
-        #        return redirect('/entries/')
             return redirect('/')
     else:
         form = EntryForm()

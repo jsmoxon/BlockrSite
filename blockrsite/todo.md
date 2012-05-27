@@ -2,4 +2,4 @@
 - blacklisting
 - prepare for chrome store and add a download icon on the settings page
 - write an about
-- make trial page that is the write page, but the submit button prompts you to signup
+- tweak github.py to make it faster
