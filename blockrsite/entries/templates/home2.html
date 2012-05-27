@@ -1,41 +1,44 @@
 {% extends 'footer.html' %}
 {% load static %}
 {% block page %}
-<form id="home_login_form" method="post" action="/accounts/login/">
-  {% csrf_token %}
-  <input id="username_input" class="login_input" type="text" value="email" name="username" onFocus="clearUsernameBox()"/>
-  <input id="password_input" class="login_input" type="password" value="password" name="password" onFocus="clearPasswordBox()"/>
-  <input type="submit" value="login" />
-<!--  <input type="hidden" name="next" value="{{ next }}" />-->
-</form>
-
-<div class="span5 bla">
-  <img src="{% get_static_prefix %}images/logo1.png" class="logo"/>
+  <form id="home_login_form" method="post" action="/accounts/login/">
+    {% csrf_token %}
+    <input id="username_input" class="login_input" type="text" value="email" name="username" onFocus="clearUsernameBox()"/>
+    <input id="password_input" class="login_input" type="password" value="password" name="password" onFocus="clearPasswordBox()"/>
+    <input type="submit" value="login" />
+    <!--  <input type="hidden" name="next" value="{{ next }}" />-->
+  </form>
+<div id="home2">
   
-  <p class="center span4">
-    Blockr is a <a href="https://chrome.google.com/webstore/detail/pdcnhbnkcbbkejnciobokdhmldndglld">Chrome Extension</a> that lets you set creative goals and blocks you from the Internet until you've acheived them. <br/><br/>
-    It was inspired by Paul Graham's <a href="http://www.paulgraham.com/love.html">How to Do What You Love.</a> <br/><br/>
-    Produce more, consume less.
-  </p>
-  <br/>
-  <div class="signupform">
-    <form action="" method="post" class="">
-      {% csrf_token %}
-      {{form.errors}}
-      <label class="">Email:</label>
-      {{form.username}}
-      <label class="">Password:</label>
-      {{form.password}}
-      <br/><br/>
-      <input type="submit" value="Signup" class="signupbutton"/>
-    </form>
+  <div class="span5">
+    <img src="{% get_static_prefix %}images/logo1.png" class="logo"/>
+    
+    <p class="center span4">
+      Blockr is a <a href="https://chrome.google.com/webstore/detail/pdcnhbnkcbbkejnciobokdhmldndglld">Chrome Extension</a> that lets you set creative goals and blocks you from the Internet until you've acheived them. <br/><br/>
+      It was inspired by Paul Graham's <a href="http://www.paulgraham.com/love.html">How to Do What You Love.</a> <br/><br/>
+      Produce more, consume less.
+    </p>
+    <br/>
+    <div class="signupform">
+      <form action="" method="post" class="">
+	{% csrf_token %}
+	{{form.errors}}
+	<label class="">Email:</label>
+	{{form.username}}
+	<label class="">Password:</label>
+	{{form.password}}
+	<br/><br/>
+	<input type="submit" value="Signup" class="signupbutton"/>
+      </form>
+    </div>
+    
   </div>
   
+  <div class="span6 right">
+    <img src="{% get_static_prefix %}images/easel.png" class=""/>
+  </div>
 </div>
 
-<div class="span6 right">
-  <img src="{% get_static_prefix %}images/easel.png" class=""/>
-</div>
 <script type="text/javascript">
   function clearUsernameBox(){
     document.getElementById('username_input').value = "";
