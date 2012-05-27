@@ -92,7 +92,7 @@ def write(request):
  #       message = ""
     if request.method == 'POST':
         form = EntryForm(request.POST)
-        if form.is_valid():
+        if form.is_valid() and form.cleaned_data['text'] != "":
             entry = Entry()
             entry.text = form.cleaned_data['text']
             entry.creator = UserProfile.objects.get(user=profile.user)
@@ -103,10 +103,55 @@ def write(request):
                 profile.flag_time = entry.create_time + time_delta
                 profile.flag = True
                 profile.save()
+                return redirect('/entries/')
+            else:
+                check_github_two(profile)
+                return redirect('/entries/')
+        else:
+            check_github_two(profile)
             return redirect('/entries/')
     else:
         form = EntryForm()
     return render_to_response("write.html", {'form':form, 'profile':profile}, context_instance=RequestContext(request))
+
+def check_github_two(profile):
+    if profile.last_commit_check and profile.github_name and profile.commit_goal:
+        check = what_should_flag_be(profile.last_commit_check, profile.github_name, profile.commit_goal)
+        print check
+        if check == True:
+            profile.flag = True
+            time_delta = datetime.timedelta(hours=profile.hours_per_goal)
+            profile.flag_time = datetime.datetime.now() + time_delta
+            profile.last_commit_check = datetime.datetime.now()
+            profile.save()
+            print "saved profile"
+            return redirect('/entries/')
+        else:
+            return redirect('/wrisdkfj/')
+    else:
+        return HttpResponse("You need to enter your github credentials at http://localhost:8000/settings/")
+        
+
+        
+
+def check_github(request):
+    profile = request.user.get_profile()
+    if request.method == 'POST':
+        if profile.last_commit_check and profile.github_name and profile.commit_goal:
+            check = what_should_flag_be(profile.last_commit_check, profile.github_name, profile.commit_goal)
+            print check
+            if check == True:
+                profile.flag = True
+                time_delta = datetime.timedelta(hours=profile.hours_per_goal)
+                profile.flag_time = datetime.datetime.now() + time_delta
+                profile.last_commit_check = datetime.datetime.now()
+                profile.save()
+                return redirect('/entries/')
+            else:
+                return redirect('/write/nocommits/')
+        else:
+            return HttpResponse("You need to enter your github credentials at http://localhost:8000/settings/")
+    return render_to_response("github.html", {'profile':profile}, context_instance=RequestContext(request))
 
 def no_commits(request):
     profile = request.user.get_profile()
@@ -158,22 +203,4 @@ def flag(request):
     profile = request.user.get_profile()
     return render_to_response("flag.html", {'profile':profile}, context_instance=RequestContext(request))
 
-def check_github(request):
-    profile = request.user.get_profile()
-    if request.method == 'POST':
-        if profile.last_commit_check and profile.github_name and profile.commit_goal:
-            check = what_should_flag_be(profile.last_commit_check, profile.github_name, profile.commit_goal)
-            print check
-            if check == True:
-                profile.flag = True
-                time_delta = datetime.timedelta(hours=profile.hours_per_goal)
-                profile.flag_time = datetime.datetime.now() + time_delta
-                profile.last_commit_check = datetime.datetime.now()
-                profile.save()
-                return redirect('/entries/')
-            else:
-                return redirect('/write/nocommits/')
-        else:
-            return HttpResponse("You need to enter your github credentials at http://localhost:8000/settings/")
-    return render_to_response("github.html", {'profile':profile}, context_instance=RequestContext(request))
     
