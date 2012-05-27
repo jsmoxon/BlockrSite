@@ -14,13 +14,12 @@
   </div><!--writing-->
   <div id="body_text_count" style="display:none"></div>
   <input type="submit" value="update" />
-</form>
 {% if profile.github_name != "" and profile.github_name != "None"  %}
-<form action="/github/" method="post">
-  {% csrf_token %}
-  <input type="submit" value="I've commited code. Check me!" />
-</form>
+  <p class="slowfade">Click update if  you've commited code and want us to check.</p>
 {% endif %}
+
+</form>
+
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="{% get_static_prefix %}js/wordcount.js"></script>
 
@@ -32,6 +31,7 @@
 $(document).ready(function() {
   $('h1').fadeOut(4000);
   $('h4').fadeOut(4000);
+  $('.slowfade').fadeOut(16000);
 $(function () {
   $(window).load(function () {
 $(':input:visible:enabled:first').focus();
