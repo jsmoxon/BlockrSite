@@ -6,10 +6,6 @@
   <li><a href="/write/">Write</a></li>
   <li><a href="/settings/">Settings</a></li>
   <li><a href="/entries/">Entries</a></li>
-{% if profile.user.is_authenticated %}
   <li><a href="/accounts/logout/">Logout</a></li>
-{% else %}
-  <li><a href="/accounts/login/">Login</a></li>
-{% endif %}
 </ul>
 {% endblock footer %}

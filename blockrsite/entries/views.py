@@ -84,6 +84,7 @@ def administration(request):
     return render_to_response("administration.html", {"form":form, "profile":profile}, context_instance=RequestContext(request))
 
 #blank page for writing
+@login_required
 def write(request):
     profile = request.user.get_profile()
 #    try:
@@ -203,4 +204,23 @@ def flag(request):
     profile = request.user.get_profile()
     return render_to_response("flag.html", {'profile':profile}, context_instance=RequestContext(request))
 
-    
+def write_preview(request):
+    profile = UserProfile.objects.get(pk=1)
+    if request.method == 'POST':
+        form = EntryForm(request.POST)
+        if form.is_valid():
+            entry = Entry()
+            entry.text = form.cleaned_data['text']
+#            entry.creator = UserProfile.objects.get(user=profile.user)
+ #           entry.create_time = datetime.datetime.now()
+  #          entry.save()
+   #         if word_count(entry.text) > profile.word_goal:
+    #            time_delta = datetime.timedelta(hours=profile.hours_per_goal)
+     #           profile.flag_time = entry.create_time + time_delta
+      #          profile.flag = True
+       #         profile.save()
+        #        return redirect('/entries/')
+            return redirect('/')
+    else:
+        form = EntryForm()
+    return render_to_response("write.html", {'form':form, 'profile':profile}, context_instance=RequestContext(request))
