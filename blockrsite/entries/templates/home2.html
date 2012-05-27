@@ -36,6 +36,14 @@
 <div class="span6 right">
   <img src="{% get_static_prefix %}images/easel.png" class=""/>
 </div>
+<script type="text/javascript">
+  function clearUsernameBox(){
+    document.getElementById('username_input').value = "";
+  };
+  function clearPasswordBox(){
+    document.getElementById('password_input').value = "";
+  }
+</script>
 
 
 {% endblock page %}
