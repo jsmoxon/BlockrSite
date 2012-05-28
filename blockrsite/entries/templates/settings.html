@@ -1,0 +1,42 @@
+{% extends 'footer.html' %}
+{% load static %}
+{% block page %}
+  <img src="{% get_static_prefix %}images/easel.png" class="offset3" width=30%/>
+
+    <h1>Settings</h1>
+    <form action="" method="post">
+      {% csrf_token %}
+      {{form.errors}}
+      <div id="settings_banner" class="span12">
+	<label>Choose an inspirational motto or phrase like, 'always produce':</label>
+	<textarea value="{{profile.motto}}" name="motto" id="settingsmotto">{{profile.motto}}</textarea>
+	<br/><br/>
+	<label>How many unblocked hours of Internet access should you earn per creative goal?</label>
+	<input type="text" value="{{profile.hours_per_goal}}" name="hours_per_goal" />
+      </div>
+      <div id="goals" class="span12">
+	<div class="row">
+	  <div id="writing_goals" class="span6">
+	    <h4>Writing Goal</h4>
+	    <label>How many words do you want to set as your creative goal?</label>
+	    <input type="text" value="{{profile.word_goal}}" name="word_goal"/>
+	  </div>
+	  
+	  <div id="coding_goals" class="span6">
+	    <h4 class="">Coding Goals (optional)</h4>
+	    <label>Github username</label>
+	    <input type="text" value="{{profile.github_name}}" name="github_name" />
+	    <br/>
+	    <label>Commit goal</label>
+	    <input type="text" value="{{profile.commit_goal}}" name="commit_goal" />
+	  </div>
+	</div>
+      </div>
+    <input type="submit" value="Update" id="settings_button" class="offset4 btn btn-info"/>
+
+    </form>
+    
+  
+  
+  
+  {% endblock page %}

@@ -74,6 +74,40 @@ clear:both;
 float:right;
 }
 
+.clear {
+clear:both
+}
+
+
+/* SETTINGS */
+
+#settings_banner {
+background:rd;
+}
+
+#goals {
+margin-top:20px;
+}
+
+#writing_goals {
+background:blu;
+float:left;
+}
+
+#coding_goals {
+background:gree;
+float:right;
+}
+
+#settingsmotto {
+width:800px;
+}
+
+#settings_button {
+width:200px;
+margin-top:30px;
+}
+
 .pointer {
 cursor:pointer;
 }

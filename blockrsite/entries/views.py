@@ -81,7 +81,7 @@ def administration(request):
             return redirect('/entries/')
     else:
         form = UserForm()
-    return render_to_response("administration.html", {"form":form, "profile":profile}, context_instance=RequestContext(request))
+    return render_to_response("settings.html", {"form":form, "profile":profile}, context_instance=RequestContext(request))
 
 #blank page for writing
 @login_required
