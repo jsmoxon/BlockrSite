@@ -30,14 +30,12 @@ def check_commit_list(username, repo_name, commit_goal):
     reader = json.load(open_url(url))
     repo_commit_list = []
     i = 0
-    print commit_goal
     while i < commit_goal+1:
         try:
             repo_commit_list.append({"message":reader[i]['commit']['message'], "date":reader[i]['commit']['committer']['date']})
         except:
             pass
         i+=1
-    print repo_commit_list
     return repo_commit_list
 
 def create_total_commit_list(username, repo_list, commit_goal):
