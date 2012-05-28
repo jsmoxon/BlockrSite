@@ -4,10 +4,13 @@
   <img src="{% get_static_prefix %}images/easel.png" class="offset3" width=30%/>
 
     <h1>Settings</h1>
+    <h6>Internet access expires {{profile.flag_time}}</h6>
+    
     <form action="" method="post">
       {% csrf_token %}
       {{form.errors}}
       <div id="settings_banner" class="span12">
+	<h4>General Settings</h4>
 	<label>Choose an inspirational motto or phrase like, 'always produce':</label>
 	<textarea value="{{profile.motto}}" name="motto" id="settingsmotto">{{profile.motto}}</textarea>
 	<br/><br/>
