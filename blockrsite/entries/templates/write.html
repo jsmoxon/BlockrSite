@@ -13,11 +13,15 @@
     <textarea name="text" id="body_text" class="prose word_count" rows="20" cols="20" ></textarea>  
   </div><!--writing-->
   <div id="body_text_count" style="display:none"></div>
-  <input type="submit" value="update" class="btn btn-info" />
-</form>
+  <input type="submit" value="submit writing" class="btn btn-info" />
 {% if profile.github_name != "" and profile.github_name != "None"  %}
-<p class="fadeout">Click update if you have committed code and want to submit that instead of writing.</p>
+  <input type="submit" value="check code" class="btn btn-primary" />
+
+  <p class="fadeout">Click check code if you have committed code and want to submit that instead of writing.</p>
 {% endif %}
+</form>
+
+
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="{% get_static_prefix %}js/wordcount.js"></script>
 
@@ -29,7 +33,7 @@
 $(document).ready(function() {
   $('h1').fadeOut(4000);
   $('h4').fadeOut(4000);
-  $('.fadeout').fadeOut(16000);
+  $('.fadeout').fadeOut(7000);
 $(function () {
   $(window).load(function () {
 $(':input:visible:enabled:first').focus();
