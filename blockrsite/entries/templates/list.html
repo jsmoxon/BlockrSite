@@ -1,7 +1,16 @@
 {% extends 'footer.html' %}
 {% block page %}
-<h1>List</h1>
-{% for entry in entries %}
-<li><a href="/{{entry.id}}">{{entry.text|truncatewords:20}}</a> -- {{entry.create_time}}</li>
-{% endfor %}
+<h1>Previous Entries</h1>
+<h4>A list of your previous writing. Click on an entry to edit or review.</h4>
+<div id="entry_list"
+     {% if entries %}
+     <ul>
+       {% for entry in entries %}
+       <li><a href="/{{entry.id}}">{{entry.text|truncatewords:20}}</a> -- {{entry.create_time}}</li>
+       {% endfor %}
+     </ul>
+     {% else %}
+     <h5>No entries written yet. <a href="/write/">Write something!</a></h5>
+     {% endif %}
+</div>
 {% endblock page %}
