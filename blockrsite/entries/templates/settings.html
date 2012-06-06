@@ -10,7 +10,7 @@
       {% csrf_token %}
       {{form.errors}}
       <div id="settings_banner" class="span12">
-	<h4>General Settings</h4>
+	<h3>General Settings</h3>
 	<label>Choose an inspirational motto or phrase like, 'always produce':</label>
 	<textarea value="{{profile.motto}}" name="motto" id="settingsmotto">{{profile.motto}}</textarea>
 	<br/><br/>
@@ -20,13 +20,13 @@
       <div id="goals" class="span12">
 	<div class="row">
 	  <div id="writing_goals" class="span6">
-	    <h4>Writing Goal</h4>
+	    <h3>Writing Goal</h3>
 	    <label>How many words do you want to set as your creative goal?</label>
 	    <input type="text" value="{{profile.word_goal}}" name="word_goal"/>
 	  </div>
 	  
 	  <div id="coding_goals" class="span6">
-	    <h4 class="">Coding Goals (optional)</h4>
+	    <h3 class="">Coding Goals (optional)</h3>
 	    <label>Github username</label>
 	    <input type="text" value="{{profile.github_name}}" name="github_name" />
 	    <br/>
@@ -40,7 +40,7 @@
     </form>
 
     <div>
-      <h4>Be sure to install the Chrome Extension if you haven't already!</h4>
+      <h3>Be sure to install the Chrome Extension if you haven't already!</h3>
       <a href="https://chrome.google.com/webstore/detail/pdcnhbnkcbbkejnciobokdhmldndglld?hl=en-US&utm_source=chrome-ntp-launcher"><img src="{% get_static_prefix%}images/ChromeWebStore_Badge_v2_340x96.png"/></a>
     </div>
   

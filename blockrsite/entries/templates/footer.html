@@ -3,9 +3,16 @@
 <ul id="footer">
   <li><a href="/">Home</a></li>
   <li><a href="/about/">About</a></li>
+{% if profile.user.is_authenticated %}
   <li><a href="/write/">Write</a></li>
+{% else %}
+  <li><a href="/preview/">Preview</a></li>
+
+{% endif %}
+
   <li><a href="/settings/">Settings</a></li>
   <li><a href="/entries/">Entries</a></li>
   <li><a href="/accounts/logout/">Logout</a></li>
 </ul>
+
 {% endblock footer %}
