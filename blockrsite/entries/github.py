@@ -74,7 +74,7 @@ def check_for_recent_commits(time, total_commit_list, commit_goal):
         for commit in repo:            
             if clean_date(commit['date']) > time:
                 count += 1
-#    print str(count)+" commits since "+str(time)
+    print str(count)+" commits since "+str(time)                
     return count
 
 def check_commits(time, username):

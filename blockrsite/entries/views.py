@@ -145,7 +145,6 @@ def check_github_two(profile):
             profile.flag_time = datetime.datetime.now() + time_delta
             profile.last_commit_check = datetime.datetime.now()
             profile.save()
-            print "saved profile"
             return redirect('/entries/')
         else:
             return redirect('/wrisdkfj/')
@@ -154,7 +153,7 @@ def check_github_two(profile):
         
 
         
-
+#so far as I know this is legacy and can be removed, but i'm too tired to make sure
 def check_github(request):
     profile = request.user.get_profile()
     if request.method == 'POST':
