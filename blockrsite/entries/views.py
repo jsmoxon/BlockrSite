@@ -34,7 +34,7 @@ def home(request):
             password = form.cleaned_data['password']
             authorize = authenticate(username=username, password=password)
             login(request, authorize)
-            return redirect('/settings/')
+            return redirect('/setup/')
     else:
         form = RegistrationForm()
     return render_to_response("home2.html", {"form":form}, context_instance=RequestContext(request))
@@ -54,10 +54,31 @@ def create_profile(request):
             password = form.cleaned_data['password']
             authorize = authenticate(username=username, password=password)
             login(request, authorize)
-            return redirect('/settings/')
+            return redirect('/setup/')
     else:
         form = RegistrationForm()
     return render_to_response("create_profile.html", {"form":form}, context_instance=RequestContext(request))
+
+@login_required
+def initial_setup(request):
+    profile = request.user.get_profile()
+    person = UserProfile.objects.get(user=profile.user.id)
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            person.word_goal = form.cleaned_data['word_goal']
+            person.hours_per_goal = form.cleaned_data['hours_per_goal']
+            person.motto = form.cleaned_data['motto']
+            person.github_name = form.cleaned_data['github_name']
+            person.commit_goal = form.cleaned_data['commit_goal']
+            #known issue - you will reset your commit check time if you update any part of your profile - it just means more committing      
+            person.last_commit_check = datetime.datetime.now()
+            person.save()
+            return redirect('/entries/')
+    else:
+        form = UserForm()
+    return render_to_response("setup.html", {"form":form, "profile":profile}, context_instance=RequestContext(request))
+
 
 
 @login_required

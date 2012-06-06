@@ -1,0 +1,32 @@
+{% extends 'footer.html' %}
+{% load static %}
+{% block page %}
+  <img src="{% get_static_prefix %}images/easel.png" class="offset3" width=30%/>
+<h3>Getting Started!</h3>
+<form action="" method="post">
+  {% csrf_token %}
+  {{form.errors}}
+  <ol>
+    <h4>General Goals</h4>
+    <li>Choose an inspirational phrase. This will appear briefly before you write.</li>
+    <textarea name="motto" id="settingsmotto"></textarea>
+    <li>How many hours of Internet access you want to earn by completing a writing or coding goal:</li>
+    <input type="text" name="hours_per_goal" />
+    <h4>Writing Goal</h4>
+    <li>What is your writing goal? How many words do you want to write to earn Internet access?</li>
+    <input type="text"name="word_goal"/>
+    <h4>Coding Goal (optional; ignore this if you don't code)</h4>
+    <li>Do you code? Is so how many code commits do you want to acheive before gaining Internet access?</li>
+    <input type="text" name="commit_goal" />
+    <li>What is your github id?</li>
+    <input type="text" name="github_name" />
+    <li>Download the <a href="https://chrome.google.com/webstore/detail/pdcnhbnkcbbkejnciobokdhmldndglld?hl=en-US&utm_source=chrome-ntp-launcher">extension</a> from the Chrome webstore.</li>
+      <a href="https://chrome.google.com/webstore/detail/pdcnhbnkcbbkejnciobokdhmldndglld?hl=en-US&utm_source=chrome-ntp-launcher"><img src="{% get_static_prefix%}images/ChromeWebStore_Badge_v2_340x96.png"/></a>
+
+  </ol>
+  <input type="submit" value="Submit" id="settings_button" class="offset4 btn btn-info"/>
+
+
+</form>
+
+  {% endblock page %}
