@@ -4,8 +4,11 @@
   <img src="{% get_static_prefix %}images/easel.png" class="offset3" width=30%/>
 
     <h1>Settings</h1>
+    {% if profile.flag %}
     <h6>Internet access expires {{profile.flag_time}}</h6>
-    
+    {% else %}
+    <h6>Internet access expired {{profile.flag_time}}</h6>
+    {% endif %}
     <form action="" method="post">
       {% csrf_token %}
       {{form.errors}}
