@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.views.generic.simple import direct_to_template
+from django.contrib.auth.views import password_change
 
 urlpatterns = patterns('',
 #    url(r'^home/', 'entries.views.home'),

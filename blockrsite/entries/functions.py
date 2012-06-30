@@ -1,8 +1,19 @@
 import datetime
+from django.core.mail import send_mail
+from models import *
 
 def word_count(text):
     words = text.split(" ")
     return len(words)
+
+def update_password(email):
+    user = User.objects.get(email=email)
+    user.password = "test"
+    user.save()
+    print user.password
+    
+
+
 
 def clean_time(entry_time, goal_time):
     """

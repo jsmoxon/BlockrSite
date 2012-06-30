@@ -24,3 +24,8 @@ class RegistrationForm(ModelForm):
         widgets = {
             'password' : forms.PasswordInput()
         }
+
+class ForgotPasswordForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ('email',)

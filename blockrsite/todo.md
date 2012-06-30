@@ -1,10 +1,5 @@
 - create a better explanation of how to get started on the front page
-- make the 2 columns on the settings  page clearer
 - blacklisting
-- write an about
-- tweak github.py to make it faster (attempt 1 did not help,js may) 
-- update chrome extension .crx to include blockr.me
-
 
 
 update preview page into more of a how does it work page and maybe have an explanation of how the service works 
