@@ -2,6 +2,9 @@
 {% block page %}
 <h1>Previous Entries</h1>
 <h4>A list of your previous writing. Click on an entry to edit or review.</h4>
+<h3>Words Written: {{words_written}}</h3>
+<h3>Entries: {{entries|length}}</h3>
+
 <div id="entry_list"
      {% if entries %}
      <ul>
