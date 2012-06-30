@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response, get_object_or_404, HttpResponse
 from django.template import RequestContext
 from forms import *
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.views import password_change
 from django.contrib.auth.decorators import login_required
 from models import *
 from functions import word_count, clean_blacklist
@@ -221,7 +222,11 @@ def view(request, entry_id):
 #returns a json with a flag
 def flag(request):
     profile = request.user.get_profile()
-    return render_to_response("flag.html", {'profile':profile}, context_instance=RequestContext(request))
+    if datetime.datetime.now() < profile.flag_time:
+        flag = True
+    else:
+        flag = False
+    return render_to_response("flag.html", {'profile':profile, 'flag':flag}, context_instance=RequestContext(request))
 
 def write_preview(request):
     profile = UserProfile.objects.get(pk=1)
