@@ -12,6 +12,7 @@ class UserProfile(models.Model):
     github_name = models.CharField(max_length=40, null=True, blank=True)
     commit_goal = models.IntegerField(blank=True, null=True, default=1)
     last_commit_check = models.DateTimeField(null=True, blank=True)
+    consecutive_days= models.IntegerField(blank=True, null=True)
     def __unicode__(self):
         return self.user.username
     

@@ -122,8 +122,14 @@ def write(request):
             entry.save()
             if word_count(entry.text) >= profile.word_goal:
                 time_delta = datetime.timedelta(hours=profile.hours_per_goal)
+                last_post = profile.flag_time - time_delta
                 profile.flag_time = entry.create_time + time_delta
                 profile.flag = True
+                #check consecuvitve days
+                if datetime.datetime.now() - last_post <datetime.timedelta(hours=24):
+                    profile.consecutive_days += 1
+                else:
+                    profile.consecutive_days = 1
                 profile.save()
                 return redirect('/entries/')
             else:
@@ -201,10 +207,16 @@ def no_commits(request):
 @login_required
 def list(request):
     profile = request.user.get_profile()
+    time_delta = datetime.timedelta(hours=profile.hours_per_goal)
+    last_post = profile.flag_time - time_delta
+    if datetime.datetime.now() - last_post > datetime.timedelta(hours=24):
+        profile.consecutive_days = 0
+        profile.save()
     entries = Entry.objects.filter(creator=profile.user).order_by('-create_time')
     words_written = 0
+    
     for entry in entries:
-        words_written += word_count(entry.text)
+        words_written += word_count(entry.text)    
     return render_to_response("list.html", {'entries':entries, 'profile':profile, 'words_written':words_written})
 
 #view a single bit of writing - should be instantly editable

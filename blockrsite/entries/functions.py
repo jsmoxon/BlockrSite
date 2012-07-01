@@ -11,9 +11,6 @@ def update_password(email):
     user.password = "test"
     user.save()
     print user.password
-    
-
-
 
 def clean_time(entry_time, goal_time):
     """
