@@ -20,10 +20,9 @@
     <input type="text" name="commit_goal" />
     <li>What is your github id?</li>
     <input type="text" name="github_name" />
-    <li>Download the <a href="https://chrome.google.com/webstore/detail/pdcnhbnkcbbkejnciobokdhmldndglld?hl=en-US&utm_source=chrome-ntp-launcher">extension</a> from the Chrome webstore.</li>
-      <a href="https://chrome.google.com/webstore/detail/pdcnhbnkcbbkejnciobokdhmldndglld?hl=en-US&utm_source=chrome-ntp-launcher"><img src="{% get_static_prefix%}images/ChromeWebStore_Badge_v2_340x96.png"/></a>
+
   </ol>
-  <input type="submit" value="Submit" id="settings_button" class="offset4 btn btn-info" onclick="chrome.webstore.install()"/>
+  <input type="submit" value="Submit & Download Extension" id="settings_button" class="offset4 btn btn-info" onclick="chrome.webstore.install()"/>
 </form>
 
   {% endblock page %}
