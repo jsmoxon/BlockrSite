@@ -7,7 +7,8 @@
     <input id="password_input" class="login_input" type="password" value="password" name="password" onFocus="clearPasswordBox()"/>
     <input type="submit" value="login" class="btn btn-info" />
     <!--  <input type="hidden" name="next" value="{{ next }}" />-->
-    <a href="/forgot/">Forgot password?</a>
+<a href="{% url django.contrib.auth.views.password_reset %}">Forgot password?</a>
+
   </form>
 
 

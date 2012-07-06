@@ -1,0 +1,11 @@
+{% extends 'footer.html' %}
+{% load static %}
+{% block page %}
+  <img src="{% get_static_prefix %}images/easel.png" class="offset3"/>
+<h1>Forgot Password?</h1>
+<form action="" method="post">
+  {% csrf_token %}
+{{form}}
+<input type="submit" class="btn primary" value="Send Password Change Instructions" />
+</form>
+{% endblock page%}

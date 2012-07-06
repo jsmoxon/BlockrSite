@@ -1,4 +1,4 @@
-# Django settings for blockrsite project.
+from constants import *
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
