@@ -15,7 +15,8 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('django.contrib.auth.urls')),
 #    url(r'^accounts/password_reset/', 'django.contrib.auth.views.password_reset', {'template_name': 'registration/pw_reset_form.html'}),   
 #    url(r'^accounts/reset/done/', 'django.contrib.auth.views.password_reset_done', {'template_name': 'home2.html'}),
-#    url(r'^accounts/
+#    url(r'^accounts/reset/(?P</', 'django.contrib.auth.views.password_reset_confirm',{'template_name':'home2.html'}),
+#    url(r'^accounts/reset/complete/', 'django.contrib.auth.views.password_reset_complete',{'template_name':'home2.html'}),
 )
 
 
