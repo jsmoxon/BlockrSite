@@ -71,11 +71,10 @@ def initial_setup(request):
             person.hours_per_goal = form.cleaned_data['hours_per_goal']
             person.motto = form.cleaned_data['motto']
             person.github_name = form.cleaned_data['github_name']
+            person.commit_goal = 0
             if form.cleaned_data['commit_goal'] != "":
                 person.commit_goal = form.cleaned_data['commit_goal']
             #known issue - you will reset your commit check time if you update any part of your profile - it just means more committing
-            else:
-                person.commit_goal = 0
             person.last_commit_check = datetime.datetime.now()
             person.save()
             return redirect('/entries/')
