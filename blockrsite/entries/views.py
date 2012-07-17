@@ -227,7 +227,11 @@ def list(request):
 @login_required
 def view(request, entry_id):
     profile = request.user.get_profile()
+    print profile.id
+    print request.user.id
     entry = get_object_or_404(Entry, pk=entry_id)
+    if profile.id != entry.creator.id:
+        entry.text = "This isn't your entry!"
     if request.method == 'POST':
         form = EntryUpdateForm(request.POST)
         if form.is_valid():
