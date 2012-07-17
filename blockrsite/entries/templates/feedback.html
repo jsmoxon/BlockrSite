@@ -1,0 +1,13 @@
+{% extends 'footer.html' %}
+{% load static %}
+{% block page %}
+  <img src="{% get_static_prefix %}images/easel.png" class="offset3" width=30%/>
+
+<h1>Feedback</h1>
+<form action="" method="post">
+  {% csrf_token %}
+  {{form}}
+  <br/><br/>
+  <input type="submit" value="Submit Feedback" class="btn btn-info"/>
+</form>
+{% endblock page%}

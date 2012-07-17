@@ -7,15 +7,17 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', 'entries.views.home'),
-    url(r'^', include('entries.urls')),                       
+    url(r'^', include('entries.urls')),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
-    url(r'^accounts/password_reset/', 'django.contrib.auth.views.password_reset', {'template_name': 'registration/pw_reset_form.html', 'email_template_name':'registration/pw_reset_email.html'}),   
+    url(r'^accounts/password_reset/', 'django.contrib.auth.views.password_reset', {'template_name': 'registration/pw_reset_form.html', 'email_template_name':'registration/pw_reset_email.html'}),
     url(r'^accounts/reset/done/', 'django.contrib.auth.views.password_reset_done', {'template_name': 'registration/pw_email_sent.html'}),
     url(r'^reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'django.contrib.auth.views.password_reset_confirm', {'template_name' : 'registration/password_reset.html',  'post_reset_redirect': '/entries/'}, name='auth_password_reset_confirm' ),
-)
+    url(r'^feedback/$', 'feedback.views.feedback'),
+    url(r'^feedback/success/', direct_to_template, {'template':'feedback_success.html'}),
+    )
 
 
 urlpatterns += patterns('django.contrib.staticfiles.views',
