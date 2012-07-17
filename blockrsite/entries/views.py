@@ -74,7 +74,9 @@ def initial_setup(request):
             person.commit_goal = 0
             if form.cleaned_data['commit_goal'] != "":
                 person.commit_goal = form.cleaned_data['commit_goal']
-            #known issue - you will reset your commit check time if you update any part of your profile - it just means more committing
+                #known issue - you will reset your commit check time if you update any part of your profile - it just means more committing
+            if person.commit_goal == None:
+                person.commit_goal = 0
             person.last_commit_check = datetime.datetime.now()
             person.save()
             return redirect('/entries/')
