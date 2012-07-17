@@ -1,6 +1,6 @@
 from constants import *
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 AUTH_PROFILE_MODULE = "entries.UserProfile"
