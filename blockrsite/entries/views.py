@@ -18,7 +18,7 @@ def check_flag():
             user.flag = False
             user.save()
     print "done checking the flag"
-    
+
 #home page for explaining the extension etc.
 def home(request):
     if request.method == 'POST':
@@ -73,7 +73,9 @@ def initial_setup(request):
             person.github_name = form.cleaned_data['github_name']
             if form.cleaned_data['commit_goal'] != "":
                 person.commit_goal = form.cleaned_data['commit_goal']
-            #known issue - you will reset your commit check time if you update any part of your profile - it just means more committing      
+            #known issue - you will reset your commit check time if you update any part of your profile - it just means more committing
+            else:
+                person.commit_goal = 0
             person.last_commit_check = datetime.datetime.now()
             person.save()
             return redirect('/entries/')
@@ -98,7 +100,7 @@ def administration(request):
             person.motto = form.cleaned_data['motto']
             person.github_name = form.cleaned_data['github_name']
             person.commit_goal = form.cleaned_data['commit_goal']
-            #known issue - you will reset your commit check time if you update any part of your profile - it just means more committing 
+            #known issue - you will reset your commit check time if you update any part of your profile - it just means more committing
             person.last_commit_check = datetime.datetime.now()
             person.save()
             return redirect('/entries/')
@@ -158,9 +160,9 @@ def check_github_two(profile):
             return redirect('/wrisdkfj/')
     else:
         return HttpResponse("You need to enter your github credentials at http://localhost:8000/settings/")
-        
 
-        
+
+
 #so far as I know this is legacy and can be removed, but i'm too tired to make sure
 def check_github(request):
     profile = request.user.get_profile()
@@ -215,9 +217,9 @@ def list(request):
         profile.save()
     entries = Entry.objects.filter(creator=profile.user).order_by('-create_time')
     words_written = 0
-    
+
     for entry in entries:
-        words_written += word_count(entry.text)    
+        words_written += word_count(entry.text)
     return render_to_response("list.html", {'entries':entries, 'profile':profile, 'words_written':words_written})
 
 #view a single bit of writing - should be instantly editable
