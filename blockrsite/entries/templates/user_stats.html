@@ -1,0 +1,28 @@
+<h1>User Stats</h1>
+
+<h4>stats</h4>
+<li>Users: {{s|length}}</li>
+<li>Active: {{active_users}} </li>
+<h4>details</h4>
+<table>
+  <tr>
+    <td>User</td>
+    <td>ID</td>
+    <td>Posts</td>
+    <td>Flag</td>
+    <td>Github</td>
+  </tr>
+{% for s, v in stats.items %}
+  <tr>
+    <td>{{s}}</td>
+    <td>{{s.id}}</td>
+    <td>{{v|length}}</td>
+    <td>{{s.flag}}</td>
+    {% if s.commit_goal > 0 %}
+    <td>Yes Github</td>
+    {% else %}
+    <td>No github</td>
+    {% endif %}
+  </tr>
+{% endfor%}
+</table>

@@ -18,4 +18,5 @@ urlpatterns = patterns('',
     url(r'^github/', 'entries.views.check_github'),
     url(r'^preview/', 'entries.views.write_preview'),                       
     url(r'^not_your_entry/', direct_to_template, {'template':'not_your_entry.html'}),
+    url(r'list_user_stats/', 'entries.views.list_user_stats'),
     )

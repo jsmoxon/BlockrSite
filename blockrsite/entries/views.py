@@ -4,6 +4,7 @@ from forms import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import password_change
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from models import *
 from functions import word_count, clean_blacklist
 import datetime
@@ -262,3 +263,15 @@ def write_preview(request):
     else:
         form = EntryForm()
     return render_to_response("write.html", {'form':form, 'profile':profile}, context_instance=RequestContext(request))
+
+@staff_member_required
+def list_user_stats(request):
+    users = UserProfile.objects.all()
+    active_users = 0
+    stats = {}
+    for user in users:
+        stats[user] = Entry.objects.filter(creator=user)
+    for a in stats:
+        if len(stats[a]) > 0:
+            active_users +=1
+    return render_to_response("user_stats.html", {'users':users, 'stats':stats, 'active_users':active_users}, context_instance=RequestContext(request))
