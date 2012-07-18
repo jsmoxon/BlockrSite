@@ -17,4 +17,5 @@ urlpatterns = patterns('',
     url(r'^about/', direct_to_template, {'template': 'about.html'}),
     url(r'^github/', 'entries.views.check_github'),
     url(r'^preview/', 'entries.views.write_preview'),                       
-)
+    url(r'^not_your_entry/', direct_to_template, {'template':'not_your_entry.html'}),
+    )

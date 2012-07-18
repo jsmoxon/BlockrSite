@@ -231,7 +231,7 @@ def view(request, entry_id):
     print request.user.id
     entry = get_object_or_404(Entry, pk=entry_id)
     if profile.id != entry.creator.id:
-        entry.text = "This isn't your entry!"
+        return redirect('/not_your_entry/')
     if request.method == 'POST':
         form = EntryUpdateForm(request.POST)
         if form.is_valid():
