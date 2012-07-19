@@ -6,3 +6,4 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'blockremail@gmail.com'
 EMAIL_HOST_PASSWORD = 'blockremail'
 EMAIL_USE_TLS = True
+SECRET_KEY = ''
