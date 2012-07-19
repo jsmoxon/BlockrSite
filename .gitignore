@@ -4,5 +4,3 @@
 *.js~
 *.css~
 blockrDBcelerybeat-schedule.db
-constants.py
-settings.py
